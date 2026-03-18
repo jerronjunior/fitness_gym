@@ -5,7 +5,7 @@ const services = [
   {
     id: 1,
     name: "Personal Training",
-    imageSrc: "/assets/gym-logo.jpg",
+    imageSrc: "/assets/personal-training.png",
     category: "Coaching",
     description:
       "One-on-one coaching tailored to your goals, whether it’s building muscle, losing fat, or improving performance.",
@@ -13,7 +13,7 @@ const services = [
   {
     id: 2,
     name: "Strength & Weightlifting",
-    imageSrc: "/assets/gym-logo.jpg",
+    imageSrc: "/assets/strength-weightlifting.png",
     category: "Strength",
     description:
       "Platform-ready racks, calibrated plates, and specialty bars for serious lifters and beginners alike.",
@@ -21,7 +21,7 @@ const services = [
   {
     id: 3,
     name: "Cardio & Conditioning",
-    imageSrc: "/assets/gym-logo.jpg",
+    imageSrc: "/assets/cardio-conditioning.png",
     category: "Cardio",
     description:
       "High-end treadmills, assault bikes, rowers, and sleds to level up your engine and athleticism.",
@@ -29,7 +29,7 @@ const services = [
   {
     id: 4,
     name: "Yoga & Mobility",
-    imageSrc: "/assets/gym-logo.jpg",
+    imageSrc: "/assets/yoga-mobility.jpg",
     category: "Recovery",
     description:
       "Guided sessions designed to improve flexibility, reduce stress, and keep your body moving pain‑free.",
