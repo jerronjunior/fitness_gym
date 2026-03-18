@@ -62,7 +62,7 @@ export function TrainersSection() {
             >
               <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-full border border-amber-400/60 bg-neutral-950">
                 <Image
-                  src="/assets/logo.png"
+                  src="/assets/palette.png"
                   alt={trainer.name}
                   fill
                   sizes="112px"

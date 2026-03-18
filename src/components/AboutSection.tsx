@@ -63,7 +63,7 @@ export function AboutSection() {
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 overflow-hidden rounded-full border border-amber-400/70 bg-black/70">
                       <Image
-                        src="/assets/logo.png"
+                        src="/assets/palette.png"
                         alt="Fitness logo"
                         width={40}
                         height={40}

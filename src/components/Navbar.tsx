@@ -54,7 +54,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <div className="relative h-10 w-10 overflow-hidden rounded-full border border-amber-500/70 bg-neutral-900">
             <Image
-              src="/assets/logo.png"
+              src="/assets/palette.png"
               alt="Gym logo"
               fill
               sizes="40px"
