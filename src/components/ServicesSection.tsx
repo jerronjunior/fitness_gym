@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Dumbbell, HeartPulse, Activity, Yoga } from "lucide-react";
+import { Dumbbell, HeartPulse, Activity, Wind } from "lucide-react";
 import { useMemo, useState } from "react";
 
 const services = [
@@ -30,7 +30,7 @@ const services = [
   {
     id: 4,
     name: "Yoga & Mobility",
-    icon: Yoga,
+    icon: Wind,
     category: "Recovery",
     description:
       "Guided sessions designed to improve flexibility, reduce stress, and keep your body moving pain‑free.",
