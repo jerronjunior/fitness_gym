@@ -4,13 +4,13 @@ import Image from "next/image";
 const trainers = [
   {
     id: 1,
-    name: "Alex Stone",
+    name: "Jhon Paul",
     role: "Head Strength Coach",
     focus: "Powerlifting · Hypertrophy",
   },
   {
     id: 2,
-    name: "Mia Carter",
+    name: "S.M.A.Perera",
     role: "Performance & Conditioning",
     focus: "Athletic performance · Fat loss",
   },
