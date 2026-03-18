@@ -7,24 +7,28 @@ const trainers = [
     name: "Jhon Paul",
     role: "Head Strength Coach",
     focus: "Powerlifting · Hypertrophy",
+    imageSrc: "/assets/John.jfif",
   },
   {
     id: 2,
     name: "S.M.Perera",
     role: "Performance & Conditioning",
     focus: "Athletic performance · Fat loss",
+    imageSrc: "/assets/Perera.jpg",
   },
   {
     id: 3,
     name: "A.R.M.Smith",
     role: "Mobility & Recovery",
     focus: "Yoga · Mobility · Breathwork",
+    imageSrc: "/assets/smith.jpg",
   },
   {
     id: 4,
-    name: "M.R.F.Rishaf",
+    name: "A.R.M.Rishaf",
     role: "General Fitness Coach",
     focus: "Beginner strength · Lifestyle",
+    imageSrc: "/assets/bangladeshi-male-fitness-trainer-in-modern-gym-setting-promoting-health-and-exercise-photo.jpg",
   },
 ];
 
@@ -60,13 +64,14 @@ export function TrainersSection() {
               transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.07 }}
               className="group flex flex-col rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900 via-black to-neutral-950 p-4 text-sm shadow-[0_0_35px_rgba(0,0,0,0.7)] transition hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-[0_0_55px_rgba(251,191,36,0.35)]"
             >
-              <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-full border border-amber-400/60 bg-neutral-950">
+              <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full border border-amber-400/60 bg-neutral-950">
                 <Image
-                  src="/assets/gym-logo.jpg"
+                  src={trainer.imageSrc}
                   alt={trainer.name}
                   fill
-                  sizes="112px"
-                  className="object-cover opacity-80"
+                  sizes="128px"
+                  quality={100}
+                  className="object-cover object-top"
                 />
               </div>
               <div className="mt-4 flex-1 space-y-1 text-center">
