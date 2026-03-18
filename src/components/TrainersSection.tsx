@@ -10,19 +10,19 @@ const trainers = [
   },
   {
     id: 2,
-    name: "S.M.A.Perera",
+    name: "S.M.Perera",
     role: "Performance & Conditioning",
     focus: "Athletic performance · Fat loss",
   },
   {
     id: 3,
-    name: "Jordan Lee",
+    name: "A.R.M.Smith",
     role: "Mobility & Recovery",
     focus: "Yoga · Mobility · Breathwork",
   },
   {
     id: 4,
-    name: "Riley Kim",
+    name: "M.R.F.Rishaf",
     role: "General Fitness Coach",
     focus: "Beginner strength · Lifestyle",
   },
