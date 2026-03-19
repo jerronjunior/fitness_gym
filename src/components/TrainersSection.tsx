@@ -1,36 +1,51 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const trainers = [
+type Trainer = {
+  id: number;
+  name: string;
+  role: string;
+  focus: string;
+  imageSrc?: string;
+};
+
+const trainers: Trainer[] = [
   {
     id: 1,
-    name: "Jhon Paul",
+    name: "John Paul",
     role: "Head Strength Coach",
     focus: "Powerlifting · Hypertrophy",
-    imageSrc: "/assets/John.jfif",
+    imageSrc: "/assets/john.png",
   },
   {
     id: 2,
     name: "S.M.Perera",
     role: "Performance & Conditioning",
     focus: "Athletic performance · Fat loss",
-    imageSrc: "/assets/Perera.jpg",
+    imageSrc: "/assets/Perera.png",
   },
   {
     id: 3,
     name: "A.R.M.Smith",
     role: "Mobility & Recovery",
     focus: "Yoga · Mobility · Breathwork",
-    imageSrc: "/assets/smith.jpg",
   },
   {
     id: 4,
     name: "A.R.M.Rishaf",
     role: "General Fitness Coach",
     focus: "Beginner strength · Lifestyle",
-    imageSrc: "/assets/bangladeshi-male-fitness-trainer-in-modern-gym-setting-promoting-health-and-exercise-photo.jpg",
   },
 ];
+
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .map((part) => part.replace(/\./g, "").charAt(0))
+    .join("")
+    .slice(0, 3)
+    .toUpperCase();
+}
 
 export function TrainersSection() {
   return (
@@ -64,16 +79,22 @@ export function TrainersSection() {
               transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.07 }}
               className="group flex flex-col rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900 via-black to-neutral-950 p-4 text-sm shadow-[0_0_35px_rgba(0,0,0,0.7)] transition hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-[0_0_55px_rgba(251,191,36,0.35)]"
             >
-              <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full border border-amber-400/60 bg-neutral-950">
-                <Image
-                  src={trainer.imageSrc}
-                  alt={trainer.name}
-                  fill
-                  sizes="128px"
-                  quality={100}
-                  className="object-cover object-top"
-                />
-              </div>
+              {trainer.imageSrc ? (
+                <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full border border-amber-400/60 bg-neutral-950">
+                  <Image
+                    src={trainer.imageSrc}
+                    alt={trainer.name}
+                    fill
+                    sizes="128px"
+                    quality={100}
+                    className="object-cover object-top"
+                  />
+                </div>
+              ) : (
+                <div className="mx-auto flex h-32 w-32 items-center justify-center rounded-full border border-amber-400/60 bg-neutral-900 text-2xl font-extrabold tracking-wider text-amber-300">
+                  {getInitials(trainer.name)}
+                </div>
+              )}
               <div className="mt-4 flex-1 space-y-1 text-center">
                 <h3 className="text-base font-semibold text-zinc-50">{trainer.name}</h3>
                 <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-amber-400">
