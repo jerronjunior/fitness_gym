@@ -35,11 +35,17 @@ export function ContactSection() {
     e.preventDefault();
     if (!validate()) return;
     setStatus("submitting");
-    setTimeout(() => {
-      setStatus("success");
-      setForm(initialState);
-      setTimeout(() => setStatus("idle"), 3500);
-    }, 900);
+
+    const subject = encodeURIComponent(`Gym Inquiry from ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+    );
+    const mailtoUrl = `mailto:jerronjunior01@gmail.com?subject=${subject}&body=${body}`;
+
+    window.location.href = mailtoUrl;
+    setStatus("success");
+    setForm(initialState);
+    setTimeout(() => setStatus("idle"), 3500);
   };
 
   const handleChange = (field: keyof FormState, value: string) => {
@@ -78,6 +84,9 @@ export function ContactSection() {
               <p>
                 <span className="font-semibold text-amber-300">Hours:</span> 24/7 gym access ·
                 staffed 6am – 10pm.
+              </p>
+              <p>
+                <span className="font-semibold text-amber-300">Email:</span> jerronjunior01@gmail.com
               </p>
             </div>
           </motion.div>
@@ -162,8 +171,8 @@ export function ContactSection() {
 
               {status === "success" && (
                 <p className="mt-3 text-xs text-emerald-400">
-                  Message sent successfully. We&apos;ll reach out to you shortly with more
-                  information.
+                  Your email app has been opened to send the message to
+                  jerronjunior01@gmail.com.
                 </p>
               )}
             </form>
