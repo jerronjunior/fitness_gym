@@ -29,12 +29,14 @@ const trainers: Trainer[] = [
     name: "A.R.M.Smith",
     role: "Mobility & Recovery",
     focus: "Yoga · Mobility · Breathwork",
+    imageSrc: "/assets/smith.png",
   },
   {
     id: 4,
     name: "A.R.M.Rishaf",
     role: "General Fitness Coach",
     focus: "Beginner strength · Lifestyle",
+    imageSrc: "/assets/Rishf.png",
   },
 ];
 

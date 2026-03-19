@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trainers Section</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --card-border: #262626;
+        --card-bg-top: #171717;
+        --card-bg-mid: #000000;
+        --card-bg-bot: #0a0a0a;
+        --text: #f4f4f5;
+        --muted: #d4d4d8;
+        --muted2: #a1a1aa;
+        --accent: #fbbf24;
+        --accent-soft: rgba(251, 191, 36, 0.6);
+        --shadow: 0 0 35px rgba(0, 0, 0, 0.7);
+        --shadow-hover: 0 0 55px rgba(251, 191, 36, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+          "Apple Color Emoji", "Segoe UI Emoji";
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .trainers {
+        padding: 5rem 0;
+        background: var(--bg);
+      }
+
+      .container {
+        width: 100%;
+        max-width: 72rem; /* ~ max-w-6xl */
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .kicker {
+        margin: 0;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .title {
+        margin: 0.5rem 0 0;
+        font-size: clamp(1.875rem, 2.2vw + 1.3rem, 2.25rem); /* 30px -> 36px */
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+      }
+
+      .subtitle {
+        margin: 0.75rem 0 0;
+        max-width: 42rem;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .grid {
+        margin-top: 2.5rem;
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 640px) {
+        .container {
+          padding: 0 1.5rem;
+        }
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .container {
+          padding: 0 2rem;
+        }
+        .grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+
+      .card {
+        border-radius: 1rem;
+        border: 1px solid var(--card-border);
+        background: linear-gradient(to bottom, var(--card-bg-top), var(--card-bg-mid), var(--card-bg-bot));
+        padding: 1rem;
+        box-shadow: var(--shadow);
+        transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(251, 191, 36, 0.8);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .avatar {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 9999px;
+        border: 1px solid var(--accent-soft);
+        background: #0a0a0a;
+        margin: 0 auto;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+
+      .initials {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        color: #fcd34d;
+        background: #171717;
+      }
+
+      .meta {
+        margin-top: 1rem;
+        text-align: center;
+      }
+
+      .name {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fafafa;
+      }
+
+      .role {
+        margin: 0.35rem 0 0;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .focus {
+        margin: 0.75rem 0 0;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <section id="trainers" class="trainers" aria-labelledby="trainers-title">
+      <div class="container">
+        <p class="kicker">Trainers</p>
+        <h2 id="trainers-title" class="title">Meet the team behind your progress.</h2>
+        <p class="subtitle">
+          Every coach on our floor is certified, battle-tested, and committed to making sure you never train
+          alone—even when you lift solo.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <div class="avatar">
+              <img src="/assets/john.png" alt="John Paul" width="128" height="128" loading="lazy" />
+            </div>
+            <div class="meta">
+              <h3 class="name">John Paul</h3>
+              <p class="role">Head Strength Coach</p>
+              <p class="focus">Powerlifting · Hypertrophy</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="avatar">
+              <img src="/assets/Perera.png" alt="S.M.Perera" width="128" height="128" loading="lazy" />
+            </div>
+            <div class="meta">
+              <h3 class="name">S.M.Perera</h3>
+              <p class="role">Performance &amp; Conditioning</p>
+              <p class="focus">Athletic performance · Fat loss</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="avatar">
+              <img src="/assets/smith.png" alt="A.R.M.Smith" width="128" height="128" loading="lazy" />
+            </div>
+            <div class="meta">
+              <h3 class="name">A.R.M.Smith</h3>
+              <p class="role">Mobility &amp; Recovery</p>
+              <p class="focus">Yoga · Mobility · Breathwork</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="avatar">
+              <img src="/assets/Rishf.png" alt="A.R.M.Rishaf" width="128" height="128" loading="lazy" />
+            </div>
+            <div class="meta">
+              <h3 class="name">A.R.M.Rishaf</h3>
+              <p class="role">General Fitness Coach</p>
+              <p class="focus">Beginner strength · Lifestyle</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

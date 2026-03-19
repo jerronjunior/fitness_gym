@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness Sports Center</title>
+
+    <!-- Tailwind CDN (keeps your existing Tailwind class design) -->
+    <script>
+      window.tailwind = {
+        config: {
+          darkMode: "class",
+          theme: { extend: {} },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background-color: #000;
+      }
+    </style>
+  </head>
+
+  <body class="antialiased">
+    <div class="min-h-screen bg-black text-zinc-50">
+      <!-- Navbar -->
+      <header
+        class="fixed inset-x-0 top-0 z-40 border-b border-neutral-800/70 bg-black/80 backdrop-blur-md dark:border-neutral-700/70"
+      >
+        <nav
+          class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="relative h-10 w-10 overflow-hidden rounded-full border border-amber-500/70 bg-neutral-900"
+            >
+              <img
+                src="assets/gym-logo.jpg"
+                alt="Gym logo"
+                class="h-full w-full object-contain"
+                width="40"
+                height="40"
+                loading="eager"
+              />
+            </div>
+            <div class="leading-tight">
+              <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">
+                Fitness
+              </p>
+              <p class="text-sm font-medium text-zinc-100">Sports Center</p>
+            </div>
+          </div>
+
+          <div class="hidden items-center gap-8 md:flex">
+            <div class="flex items-center gap-6 text-sm font-medium uppercase tracking-wide">
+              <button
+                data-nav="home"
+                class="text-zinc-300 transition hover:text-amber-400"
+              >
+                Home
+              </button>
+              <button
+                data-nav="about"
+                class="text-zinc-300 transition hover:text-amber-400"
+              >
+                About
+              </button>
+              <button
+                data-nav="services"
+                class="text-zinc-300 transition hover:text-amber-400"
+              >
+                Services
+              </button>
+              <button
+                data-nav="trainers"
+                class="text-zinc-300 transition hover:text-amber-400"
+              >
+                Trainers
+              </button>
+              <button
+                data-nav="contact"
+                class="text-zinc-300 transition hover:text-amber-400"
+              >
+                Contact
+              </button>
+            </div>
+
+            <button
+              id="themeToggleDesktop"
+              type="button"
+              aria-label="Toggle dark mode"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-700 bg-neutral-900 text-zinc-100 shadow-md transition hover:border-amber-500 hover:text-amber-400"
+            >
+              <span id="themeIconDesktop" class="inline-flex" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="flex items-center gap-2 md:hidden">
+            <button
+              id="themeToggleMobile"
+              type="button"
+              aria-label="Toggle dark mode"
+              class="mr-1 flex h-9 w-9 items-center justify-center rounded-full border border-neutral-700 bg-neutral-900 text-zinc-100 shadow-md transition hover:border-amber-500 hover:text-amber-400"
+            >
+              <span id="themeIconMobile" class="inline-flex" aria-hidden="true"></span>
+            </button>
+
+            <button
+              id="menuToggle"
+              type="button"
+              aria-label="Toggle navigation menu"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-700 bg-neutral-900 text-zinc-100 shadow-md transition hover:border-amber-500 hover:text-amber-400"
+            >
+              <span id="menuIcon" class="inline-flex" aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+
+        <div
+          id="mobileMenu"
+          class="hidden border-t border-neutral-800/70 bg-black/95 px-4 py-3 sm:px-6 md:hidden"
+        >
+          <div class="flex flex-col gap-3 text-sm font-medium uppercase tracking-wide">
+            <button
+              data-nav="home"
+              class="rounded-md px-2 py-2 text-left text-zinc-200 transition hover:bg-neutral-900 hover:text-amber-400"
+            >
+              Home
+            </button>
+            <button
+              data-nav="about"
+              class="rounded-md px-2 py-2 text-left text-zinc-200 transition hover:bg-neutral-900 hover:text-amber-400"
+            >
+              About
+            </button>
+            <button
+              data-nav="services"
+              class="rounded-md px-2 py-2 text-left text-zinc-200 transition hover:bg-neutral-900 hover:text-amber-400"
+            >
+              Services
+            </button>
+            <button
+              data-nav="trainers"
+              class="rounded-md px-2 py-2 text-left text-zinc-200 transition hover:bg-neutral-900 hover:text-amber-400"
+            >
+              Trainers
+            </button>
+            <button
+              data-nav="contact"
+              class="rounded-md px-2 py-2 text-left text-zinc-200 transition hover:bg-neutral-900 hover:text-amber-400"
+            >
+              Contact
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main
+        class="bg-[radial-gradient(circle_at_top,_rgba(250,204,21,0.12)_0,_transparent_55%),radial-gradient(circle_at_bottom,_rgba(23,23,23,1)_0,_rgba(0,0,0,1)_55%)]"
+      >
+        <!-- Hero -->
+        <section
+          id="home"
+          class="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-amber-500 via-black to-neutral-900 pt-24"
+        >
+          <div class="pointer-events-none absolute inset-0 opacity-40 mix-blend-screen">
+            <div class="absolute -left-10 top-24 h-64 w-64 rounded-full bg-amber-500/60 blur-3xl"></div>
+            <div class="absolute -right-10 bottom-10 h-72 w-72 rounded-full bg-zinc-100/10 blur-3xl"></div>
+          </div>
+
+          <div
+            class="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-16 px-4 pb-16 pt-8 text-center md:flex-row md:items-stretch md:gap-12 md:px-6 lg:px-8 lg:text-left"
+          >
+            <div class="max-w-xl space-y-6">
+              <p
+                class="inline-flex rounded-full border border-amber-400/60 bg-black/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-amber-300 backdrop-blur"
+              >
+                Est. 2023 · Fitness Sports Center
+              </p>
+              <h1
+                class="text-4xl font-extrabold uppercase tracking-tight text-zinc-50 sm:text-5xl lg:text-6xl"
+              >
+                Transform Your
+                <span
+                  class="bg-gradient-to-r from-amber-300 via-amber-500 to-yellow-400 bg-clip-text text-transparent"
+                >
+                  Body
+                </span>
+                Today
+              </h1>
+              <p class="max-w-lg text-sm text-zinc-200/90 sm:text-base">
+                Push past your limits with elite equipment, science-backed programs, and world-class
+                coaches. This is where discipline, strength, and community come together.
+              </p>
+              <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-start">
+                <a
+                  href="#contact"
+                  class="inline-flex items-center justify-center rounded-full bg-amber-500 px-8 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black shadow-xl shadow-amber-500/40 transition hover:-translate-y-0.5 hover:bg-amber-400"
+                >
+                  Join Now
+                </a>
+                <a
+                  href="#about"
+                  class="inline-flex items-center justify-center rounded-full border border-zinc-500/80 bg-black/40 px-8 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-zinc-100 transition hover:border-amber-400 hover:text-amber-300"
+                >
+                  Learn More
+                </a>
+              </div>
+
+              <div class="mt-6 grid max-w-xs grid-cols-3 gap-4 sm:max-w-sm">
+                <div class="space-y-1 text-left">
+                  <p class="text-2xl font-extrabold text-zinc-50">24/7</p>
+                  <p class="text-xs uppercase tracking-[0.22em] text-zinc-300/90">Access & Support</p>
+                </div>
+                <div class="space-y-1 text-left">
+                  <p class="text-2xl font-extrabold text-zinc-50">+50</p>
+                  <p class="text-xs uppercase tracking-[0.22em] text-zinc-300/90">Strength Machines</p>
+                </div>
+                <div class="space-y-1 text-left">
+                  <p class="text-2xl font-extrabold text-zinc-50">4</p>
+                  <p class="text-xs uppercase tracking-[0.22em] text-zinc-300/90">Training Zones</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative flex flex-1 items-center justify-center">
+              <div
+                class="relative h-[320px] w-[320px] max-w-full rounded-[2.5rem] border border-amber-500/40 bg-gradient-to-tr from-neutral-950 via-neutral-900 to-neutral-800 p-1 shadow-[0_0_60px_rgba(0,0,0,0.8)] sm:h-[380px] sm:w-[340px] md:h-[420px] md:w-[360px]"
+              >
+                <div
+                  class="relative h-full w-full overflow-hidden rounded-[2.2rem] bg-gradient-to-b from-zinc-900 via-black to-neutral-950"
+                >
+                  <div
+                    class="absolute inset-0 bg-[radial-gradient(circle_at_20%_0,rgba(250,204,21,0.35),transparent_60%),radial-gradient(circle_at_80%_100%,rgba(253,224,71,0.25),transparent_55%)]"
+                  ></div>
+                  <div class="relative flex h-full flex-col justify-between px-6 py-6">
+                    <div class="flex items-center justify-between text-xs text-amber-100/90">
+                      <p class="font-semibold uppercase tracking-[0.25em]">Elite Program</p>
+                      <p
+                        class="rounded-full border border-amber-300/40 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.24em]"
+                      >
+                        Strength · Cardio
+                      </p>
+                    </div>
+
+                    <div class="space-y-4">
+                      <p
+                        class="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-amber-200"
+                      >
+                        Weekly Focus
+                      </p>
+                      <div class="grid grid-cols-3 gap-3 text-[0.65rem] text-zinc-100/90">
+                        <div>
+                          <p class="font-semibold uppercase tracking-[0.22em] text-zinc-400">Mon</p>
+                          <p class="mt-1 text-[0.7rem]">Push Power</p>
+                        </div>
+                        <div>
+                          <p class="font-semibold uppercase tracking-[0.22em] text-zinc-400">Wed</p>
+                          <p class="mt-1 text-[0.7rem]">Leg Strength</p>
+                        </div>
+                        <div>
+                          <p class="font-semibold uppercase tracking-[0.22em] text-zinc-400">Fri</p>
+                          <p class="mt-1 text-[0.7rem]">Conditioning</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs">
+                      <div>
+                        <p
+                          class="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-zinc-400"
+                        >
+                          Members
+                        </p>
+                        <p class="text-lg font-extrabold text-amber-300">+300</p>
+                      </div>
+                      <div class="text-right">
+                        <p
+                          class="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-zinc-400"
+                        >
+                          Avg. Results
+                        </p>
+                        <p class="text-lg font-extrabold text-zinc-50">8 Weeks</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="bg-neutral-950 py-20 text-zinc-100 sm:py-24 lg:py-28">
+          <div
+            class="mx-auto flex max-w-6xl flex-col gap-12 px-4 sm:px-6 lg:flex-row lg:items-center lg:gap-16 lg:px-8"
+          >
+            <div class="flex-1 space-y-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">
+                About The Gym
+              </p>
+              <h2 class="text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
+                Built for lifters, athletes, and everyday warriors.
+              </h2>
+              <p class="text-sm leading-relaxed text-zinc-300 sm:text-base">
+                Fitness Sports Center is a community-driven gym designed to help you train harder,
+                recover smarter, and stay consistent. From first-time members to seasoned competitors,
+                we combine performance coaching with a motivating atmosphere that keeps you coming back.
+              </p>
+
+              <div class="grid gap-6 pt-4 sm:grid-cols-2">
+                <div>
+                  <h3 class="text-sm font-semibold uppercase tracking-[0.22em] text-amber-400">Mission</h3>
+                  <p class="mt-2 text-sm text-zinc-300">
+                    Empower every member to unlock their strongest, healthiest self through expert coaching,
+                    proven training systems, and an environment that rewards effort.
+                  </p>
+                </div>
+                <div>
+                  <h3 class="text-sm font-semibold uppercase tracking-[0.22em] text-amber-400">Vision</h3>
+                  <p class="mt-2 text-sm text-zinc-300">
+                    To be the go-to fitness hub in the city—where results, relationships, and resilience are built
+                    inside and outside the gym.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-1">
+              <div
+                class="relative mx-auto max-w-md rounded-3xl border border-neutral-700 bg-gradient-to-br from-neutral-900 via-black to-neutral-950 p-1 shadow-[0_0_60px_rgba(0,0,0,0.7)]"
+              >
+                <div class="relative overflow-hidden rounded-[1.35rem] bg-neutral-900/80">
+                  <div
+                    class="absolute inset-0 bg-[radial-gradient(circle_at_0_0,rgba(250,204,21,0.25),transparent_55%),radial-gradient(circle_at_90%_100%,rgba(253,224,71,0.18),transparent_50%)]"
+                  ></div>
+                  <div class="relative flex flex-col gap-4 px-5 py-5">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="h-10 w-10 overflow-hidden rounded-full border border-amber-400/70 bg-black/70"
+                        >
+                          <img
+                            src="assets/gym-logo.jpg"
+                            alt="Fitness logo"
+                            width="40"
+                            height="40"
+                            class="h-full w-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div>
+                          <p class="text-xs font-semibold uppercase tracking-[0.24em] text-amber-300">
+                            Strength First
+                          </p>
+                          <p class="text-xs text-zinc-300">Premium equipment & performance coaching.</p>
+                        </div>
+                      </div>
+                      <span
+                        class="rounded-full bg-amber-500/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-amber-300"
+                      >
+                        24/7 Access
+                      </span>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-3 text-[0.7rem] text-zinc-200">
+                      <div>
+                        <p class="text-[0.65rem] uppercase tracking-[0.22em] text-zinc-400">Area</p>
+                        <p class="mt-1 text-sm font-semibold">800 m²</p>
+                      </div>
+                      <div>
+                        <p class="text-[0.65rem] uppercase tracking-[0.22em] text-zinc-400">Racks</p>
+                        <p class="mt-1 text-sm font-semibold">8 Power</p>
+                      </div>
+                      <div>
+                        <p class="text-[0.65rem] uppercase tracking-[0.22em] text-zinc-400">Classes</p>
+                        <p class="mt-1 text-sm font-semibold">+25 / week</p>
+                      </div>
+                    </div>
+
+                    <p class="text-[0.72rem] leading-relaxed text-zinc-300/90">
+                      “We created a space where loud PRs, early-morning grinders, and first-time members all feel at
+                      home. No ego, just progress.”
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="bg-black py-20 text-zinc-100 sm:py-24 lg:py-28">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">Services</p>
+                <h2 class="mt-2 text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
+                  Train your way—without guesswork.
+                </h2>
+                <p class="mt-3 max-w-xl text-sm text-zinc-300 sm:text-base">
+                  From focused strength sessions to recovery-focused yoga, build the training split that fits your
+                  lifestyle and goals.
+                </p>
+              </div>
+
+              <div class="w-full max-w-xs">
+                <label class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">
+                  Search services
+                </label>
+                <input
+                  id="servicesSearch"
+                  placeholder="Search by name or goal..."
+                  class="mt-2 w-full rounded-full border border-neutral-700 bg-neutral-950/90 px-4 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                />
+              </div>
+            </div>
+
+            <div id="servicesGrid" class="mt-10 grid gap-6 md:grid-cols-2">
+              <article
+                class="serviceCard group flex h-full flex-col rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-950 via-neutral-900 to-black p-5 shadow-[0_0_40px_rgba(0,0,0,0.7)] transition hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-[0_0_60px_rgba(251,191,36,0.4)]"
+                data-name="Personal Training"
+                data-category="Coaching"
+                data-description="One-on-one coaching tailored to your goals, whether it’s building muscle, losing fat, or improving performance."
+              >
+                <div class="flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-amber-500/10 ring-1 ring-amber-400/50 group-hover:bg-amber-400"
+                    >
+                      <img
+                        src="assets/personal-training.png"
+                        alt="Personal Training"
+                        class="h-full w-full object-cover"
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">Coaching</p>
+                      <h3 class="text-lg font-bold text-zinc-50">Personal Training</h3>
+                    </div>
+                  </div>
+                  <span class="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-zinc-500">01</span>
+                </div>
+                <p class="mt-4 text-sm text-zinc-300">
+                  One-on-one coaching tailored to your goals, whether it’s building muscle, losing fat, or improving
+                  performance.
+                </p>
+              </article>
+
+              <article
+                class="serviceCard group flex h-full flex-col rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-950 via-neutral-900 to-black p-5 shadow-[0_0_40px_rgba(0,0,0,0.7)] transition hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-[0_0_60px_rgba(251,191,36,0.4)]"
+                data-name="Strength & Weightlifting"
+                data-category="Strength"
+                data-description="Platform-ready racks, calibrated plates, and specialty bars for serious lifters and beginners alike."
+              >
+                <div class="flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-amber-500/10 ring-1 ring-amber-400/50 group-hover:bg-amber-400"
+                    >
+                      <img
+                        src="assets/strength-weightlifting.png"
+                        alt="Strength & Weightlifting"
+                        class="h-full w-full object-cover"
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">Strength</p>
+                      <h3 class="text-lg font-bold text-zinc-50">Strength &amp; Weightlifting</h3>
+                    </div>
+                  </div>
+                  <span class="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-zinc-500">02</span>
+                </div>
+                <p class="mt-4 text-sm text-zinc-300">
+                  Platform-ready racks, calibrated plates, and specialty bars for serious lifters and beginners alike.
+                </p>
+              </article>
+
+              <article
+                class="serviceCard group flex h-full flex-col rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-950 via-neutral-900 to-black p-5 shadow-[0_0_40px_rgba(0,0,0,0.7)] transition hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-[0_0_60px_rgba(251,191,36,0.4)]"
+                data-name="Cardio & Conditioning"
+                data-category="Cardio"
+                data-description="High-end treadmills, assault bikes, rowers, and sleds to level up your engine and athleticism."
+              >
+                <div class="flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-amber-500/10 ring-1 ring-amber-400/50 group-hover:bg-amber-400"
+                    >
+                      <img
+                        src="assets/cardio-conditioning.png"
+                        alt="Cardio & Conditioning"
+                        class="h-full w-full object-cover"
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">Cardio</p>
+                      <h3 class="text-lg font-bold text-zinc-50">Cardio &amp; Conditioning</h3>
+                    </div>
+                  </div>
+                  <span class="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-zinc-500">03</span>
+                </div>
+                <p class="mt-4 text-sm text-zinc-300">
+                  High-end treadmills, assault bikes, rowers, and sleds to level up your engine and athleticism.
+                </p>
+              </article>
+
+              <article
+                class="serviceCard group flex h-full flex-col rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-950 via-neutral-900 to-black p-5 shadow-[0_0_40px_rgba(0,0,0,0.7)] transition hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-[0_0_60px_rgba(251,191,36,0.4)]"
+                data-name="Yoga & Mobility"
+                data-category="Recovery"
+                data-description="Guided sessions designed to improve flexibility, reduce stress, and keep your body moving pain‑free."
+              >
+                <div class="flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-amber-500/10 ring-1 ring-amber-400/50 group-hover:bg-amber-400"
+                    >
+                      <img
+                        src="assets/yoga-mobility.jpg"
+                        alt="Yoga & Mobility"
+                        class="h-full w-full object-cover"
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">Recovery</p>
+                      <h3 class="text-lg font-bold text-zinc-50">Yoga &amp; Mobility</h3>
+                    </div>
+                  </div>
+                  <span class="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-zinc-500">04</span>
+                </div>
+                <p class="mt-4 text-sm text-zinc-300">
+                  Guided sessions designed to improve flexibility, reduce stress, and keep your body moving pain‑free.
+                </p>
+              </article>
+
+              <div
+                id="servicesEmpty"
+                class="hidden col-span-full rounded-2xl border border-dashed border-neutral-700 bg-neutral-950/70 px-5 py-6 text-sm text-zinc-400"
+              >
+                No services matched your search. Try a different goal such as
+                <span class="font-semibold text-amber-300">strength</span>,
+                <span class="font-semibold text-amber-300">cardio</span>, or
+                <span class="font-semibold text-amber-300">recovery</span>.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Trainers -->
+        <section id="trainers" class="bg-neutral-950 py-20 text-zinc-100 sm:py-24 lg:py-28">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">Trainers</p>
+                <h2 class="mt-2 text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
+                  Meet the team behind your progress.
+                </h2>
+                <p class="mt-3 max-w-xl text-sm text-zinc-300 sm:text-base">
+                  Every coach on our floor is certified, battle-tested, and committed to making sure you never train
+                  alone—even when you lift solo.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <article
+                class="group flex flex-col rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900 via-black to-neutral-950 p-4 text-sm shadow-[0_0_35px_rgba(0,0,0,0.7)] transition hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-[0_0_55px_rgba(251,191,36,0.35)]"
+              >
+                <div
+                  class="relative mx-auto h-32 w-32 overflow-hidden rounded-full border border-amber-400/60 bg-neutral-950"
+                >
+                  <img
+                    src="assets/john.png"
+                    alt="John Paul"
+                    class="h-full w-full object-cover object-top"
+                    width="128"
+                    height="128"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="mt-4 flex-1 space-y-1 text-center">
+                  <h3 class="text-base font-semibold text-zinc-50">John Paul</h3>
+                  <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-amber-400">
+                    Head Strength Coach
+                  </p>
+                  <p class="mt-2 text-xs text-zinc-300">Powerlifting · Hypertrophy</p>
+                </div>
+              </article>
+
+              <article
+                class="group flex flex-col rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900 via-black to-neutral-950 p-4 text-sm shadow-[0_0_35px_rgba(0,0,0,0.7)] transition hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-[0_0_55px_rgba(251,191,36,0.35)]"
+              >
+                <div
+                  class="relative mx-auto h-32 w-32 overflow-hidden rounded-full border border-amber-400/60 bg-neutral-950"
+                >
+                  <img
+                    src="assets/Perera.png"
+                    alt="S.M.Perera"
+                    class="h-full w-full object-cover object-top"
+                    width="128"
+                    height="128"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="mt-4 flex-1 space-y-1 text-center">
+                  <h3 class="text-base font-semibold text-zinc-50">S.M.Perera</h3>
+                  <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-amber-400">
+                    Performance &amp; Conditioning
+                  </p>
+                  <p class="mt-2 text-xs text-zinc-300">Athletic performance · Fat loss</p>
+                </div>
+              </article>
+
+              <article
+                class="group flex flex-col rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900 via-black to-neutral-950 p-4 text-sm shadow-[0_0_35px_rgba(0,0,0,0.7)] transition hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-[0_0_55px_rgba(251,191,36,0.35)]"
+              >
+                <div
+                  class="relative mx-auto h-32 w-32 overflow-hidden rounded-full border border-amber-400/60 bg-neutral-950"
+                >
+                  <img
+                    src="assets/smith.png"
+                    alt="A.R.M.Smith"
+                    class="h-full w-full object-cover object-top"
+                    width="128"
+                    height="128"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="mt-4 flex-1 space-y-1 text-center">
+                  <h3 class="text-base font-semibold text-zinc-50">A.R.M.Smith</h3>
+                  <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-amber-400">
+                    Mobility &amp; Recovery
+                  </p>
+                  <p class="mt-2 text-xs text-zinc-300">Yoga · Mobility · Breathwork</p>
+                </div>
+              </article>
+
+              <article
+                class="group flex flex-col rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900 via-black to-neutral-950 p-4 text-sm shadow-[0_0_35px_rgba(0,0,0,0.7)] transition hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-[0_0_55px_rgba(251,191,36,0.35)]"
+              >
+                <div
+                  class="relative mx-auto h-32 w-32 overflow-hidden rounded-full border border-amber-400/60 bg-neutral-950"
+                >
+                  <img
+                    src="assets/Rishf.png"
+                    alt="A.R.M.Rishaf"
+                    class="h-full w-full object-cover object-top"
+                    width="128"
+                    height="128"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="mt-4 flex-1 space-y-1 text-center">
+                  <h3 class="text-base font-semibold text-zinc-50">A.R.M.Rishaf</h3>
+                  <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-amber-400">
+                    General Fitness Coach
+                  </p>
+                  <p class="mt-2 text-xs text-zinc-300">Beginner strength · Lifestyle</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="bg-black py-20 text-zinc-100 sm:py-24 lg:py-28">
+          <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+              <div class="space-y-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">Contact</p>
+                <h2 class="text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
+                  Ready to start? Let&#39;s talk.
+                </h2>
+                <p class="max-w-md text-sm text-zinc-300 sm:text-base">
+                  Drop us a message about your goals, schedule, or any questions you have. Our team will get back to
+                  you within one business day with next steps.
+                </p>
+                <div class="mt-4 space-y-2 text-sm text-zinc-300">
+                  <p>
+                    <span class="font-semibold text-amber-300">Location:</span> Downtown district, next to the central
+                    sports complex.
+                  </p>
+                  <p>
+                    <span class="font-semibold text-amber-300">Hours:</span> 24/7 gym access · staffed 6am – 10pm.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-950 via-neutral-900 to-black p-6 shadow-[0_0_45px_rgba(0,0,0,0.8)]"
+              >
+                <form id="contactForm" novalidate class="space-y-4 text-sm">
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      class="mt-2 w-full rounded-lg border border-neutral-700 bg-neutral-950/80 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                      placeholder="Enter your full name"
+                      required
+                    />
+                    <p id="errorName" class="mt-1 hidden text-xs text-amber-400"></p>
+                  </div>
+
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      class="mt-2 w-full rounded-lg border border-neutral-700 bg-neutral-950/80 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                      placeholder="you@example.com"
+                      required
+                    />
+                    <p id="errorEmail" class="mt-1 hidden text-xs text-amber-400"></p>
+                  </div>
+
+                  <div>
+                    <label
+                      for="message"
+                      class="block text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      class="mt-2 min-h-[120px] w-full rounded-lg border border-neutral-700 bg-neutral-950/80 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                      placeholder="Tell us about your goals or any questions you have..."
+                      required
+                    ></textarea>
+                    <p id="errorMessage" class="mt-1 hidden text-xs text-amber-400"></p>
+                  </div>
+
+                  <button
+                    id="contactSubmit"
+                    type="submit"
+                    class="mt-2 inline-flex w-full items-center justify-center rounded-full bg-amber-500 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.22em] text-black shadow-lg shadow-amber-500/40 transition hover:-translate-y-0.5 hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-70"
+                  >
+                    Send Message
+                  </button>
+
+                  <p id="contactSuccess" class="mt-3 hidden text-xs text-emerald-400">
+                    Message sent successfully. We&#39;ll reach out to you shortly with more information.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-neutral-800 bg-black py-6 text-xs text-zinc-400">
+        <div
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 sm:flex-row sm:px-6 lg:px-8"
+        >
+          <p>
+            © <span id="year"></span>
+            <span class="font-semibold text-zinc-200">Fitness Sports Center</span>. All rights reserved.
+          </p>
+          <p class="text-[0.7rem] uppercase tracking-[0.22em] text-zinc-500">
+            Strong body · Focused mind · Consistent habits
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      function iconSun() {
+        return `
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path><path d="M12 20v2"></path>
+            <path d="M4.93 4.93l1.41 1.41"></path><path d="M17.66 17.66l1.41 1.41"></path>
+            <path d="M2 12h2"></path><path d="M20 12h2"></path>
+            <path d="M4.93 19.07l1.41-1.41"></path><path d="M17.66 6.34l1.41-1.41"></path>
+          </svg>
+        `;
+      }
+      function iconMoon() {
+        return `
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        `;
+      }
+      function iconMenu() {
+        return `
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h16"></path>
+          </svg>
+        `;
+      }
+      function iconX() {
+        return `
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>
+          </svg>
+        `;
+      }
+
+      (function initTheme() {
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const stored = localStorage.getItem("theme");
+        const isDark = stored ? stored === "dark" : prefersDark;
+        document.documentElement.classList.toggle("dark", isDark);
+
+        const iconDesktop = document.getElementById("themeIconDesktop");
+        const iconMobile = document.getElementById("themeIconMobile");
+        if (iconDesktop) iconDesktop.innerHTML = isDark ? iconSun() : iconMoon();
+        if (iconMobile) iconMobile.innerHTML = isDark ? iconSun() : iconMoon();
+      })();
+
+      (function initNavbar() {
+        const mobileMenu = document.getElementById("mobileMenu");
+        const menuToggle = document.getElementById("menuToggle");
+        const menuIcon = document.getElementById("menuIcon");
+        let isOpen = false;
+
+        function setMenu(next) {
+          isOpen = next;
+          if (mobileMenu) mobileMenu.classList.toggle("hidden", !isOpen);
+          if (menuIcon) menuIcon.innerHTML = isOpen ? iconX() : iconMenu();
+        }
+        if (menuIcon) menuIcon.innerHTML = iconMenu();
+
+        if (menuToggle) {
+          menuToggle.addEventListener("click", () => setMenu(!isOpen));
+        }
+
+        function scrollToId(id) {
+          const el = document.getElementById(id);
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+          setMenu(false);
+        }
+
+        document.querySelectorAll("[data-nav]").forEach((btn) => {
+          btn.addEventListener("click", () => scrollToId(btn.getAttribute("data-nav")));
+        });
+
+        function toggleTheme() {
+          const nowDark = !document.documentElement.classList.contains("dark");
+          document.documentElement.classList.toggle("dark", nowDark);
+          localStorage.setItem("theme", nowDark ? "dark" : "light");
+          const iconDesktop = document.getElementById("themeIconDesktop");
+          const iconMobile = document.getElementById("themeIconMobile");
+          if (iconDesktop) iconDesktop.innerHTML = nowDark ? iconSun() : iconMoon();
+          if (iconMobile) iconMobile.innerHTML = nowDark ? iconSun() : iconMoon();
+        }
+
+        const t1 = document.getElementById("themeToggleDesktop");
+        const t2 = document.getElementById("themeToggleMobile");
+        if (t1) t1.addEventListener("click", toggleTheme);
+        if (t2) t2.addEventListener("click", toggleTheme);
+      })();
+
+      (function initServicesSearch() {
+        const input = document.getElementById("servicesSearch");
+        const cards = Array.from(document.querySelectorAll(".serviceCard"));
+        const empty = document.getElementById("servicesEmpty");
+
+        function applyFilter() {
+          const q = (input && input.value ? input.value : "").toLowerCase().trim();
+          let shown = 0;
+          cards.forEach((card) => {
+            const hay =
+              (card.getAttribute("data-name") || "") +
+              " " +
+              (card.getAttribute("data-category") || "") +
+              " " +
+              (card.getAttribute("data-description") || "");
+            const ok = !q || hay.toLowerCase().includes(q);
+            card.classList.toggle("hidden", !ok);
+            if (ok) shown += 1;
+          });
+          if (empty) empty.classList.toggle("hidden", shown !== 0);
+        }
+
+        if (input) input.addEventListener("input", applyFilter);
+        applyFilter();
+      })();
+
+      (function initContactForm() {
+        const form = document.getElementById("contactForm");
+        const submit = document.getElementById("contactSubmit");
+        const success = document.getElementById("contactSuccess");
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const message = document.getElementById("message");
+        const errorName = document.getElementById("errorName");
+        const errorEmail = document.getElementById("errorEmail");
+        const errorMessage = document.getElementById("errorMessage");
+
+        function setError(el, msg) {
+          if (!el) return;
+          if (msg) {
+            el.textContent = msg;
+            el.classList.remove("hidden");
+          } else {
+            el.textContent = "";
+            el.classList.add("hidden");
+          }
+        }
+
+        function validate() {
+          const n = (name && name.value ? name.value : "").trim();
+          const e = (email && email.value ? email.value : "").trim();
+          const m = (message && message.value ? message.value : "").trim();
+          const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
+          setError(errorName, n ? "" : "Name is required.");
+          setError(errorEmail, e ? (emailOk ? "" : "Enter a valid email.") : "Email is required.");
+          setError(errorMessage, m ? "" : "Message is required.");
+
+          return !!(n && e && emailOk && m);
+        }
+
+        function clearSuccess() {
+          if (success) success.classList.add("hidden");
+        }
+
+        [name, email, message].forEach((el) => {
+          if (!el) return;
+          el.addEventListener("input", () => {
+            clearSuccess();
+            if (el === name) setError(errorName, "");
+            if (el === email) setError(errorEmail, "");
+            if (el === message) setError(errorMessage, "");
+          });
+        });
+
+        if (!form) return;
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          clearSuccess();
+          if (!validate()) return;
+
+          if (submit) {
+            submit.disabled = true;
+            submit.textContent = "Sending...";
+          }
+
+          window.setTimeout(() => {
+            if (submit) {
+              submit.disabled = false;
+              submit.textContent = "Send Message";
+            }
+            if (form) form.reset();
+            if (success) success.classList.remove("hidden");
+            window.setTimeout(() => clearSuccess(), 3500);
+          }, 900);
+        });
+      })();
+
+      (function initYear() {
+        const year = document.getElementById("year");
+        if (year) year.textContent = new Date().getFullYear();
+      })();
+    </script>
+  </body>
+</html>
+
