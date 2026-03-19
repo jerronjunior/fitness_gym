@@ -1,40 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Fitness Sports Center Website
+
+A modern fitness gym website built with Next.js and TypeScript. This project includes a complete landing page with sections for hero content, services, trainers, contact form, and footer.
+
+## Overview
+
+This website is designed for a gym or sports center and includes:
+
+- Branded hero and navigation sections
+- Service cards with custom images
+- Trainer cards with individual trainer photos
+- Contact form with email handoff
+- Responsive layout for desktop and mobile
+
+## Tech Stack
+
+- Next.js 16 (Pages Router)
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion
+- Lucide React
+
+## Project Structure
+
+```
+src/
+	components/
+		AboutSection.tsx
+		ContactSection.tsx
+		Footer.tsx
+		HeroSection.tsx
+		Navbar.tsx
+		ServicesSection.tsx
+		TrainersSection.tsx
+	pages/
+		_app.tsx
+		_document.tsx
+		index.tsx
+		api/
+			hello.ts
+public/
+	assets/
+```
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### 3. Build for production
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+npm run build
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+### 4. Start production server
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run start
+```
 
-## Learn More
+## Available Scripts
 
-To learn more about Next.js, take a look at the following resources:
+- npm run dev: Start local development server
+- npm run build: Create production build
+- npm run start: Run production build
+- npm run lint: Run ESLint checks
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## Contact Form Behavior
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The contact form is currently configured to open the visitor's email app and prefill an email to:
 
-## Deploy on Vercel
+- jerronjunior01@gmail.com
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Submission includes name, email, and message content in the drafted email.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## Asset Management
+
+All media is served from:
+
+- public/assets
+
+When adding new images, prefer clean filenames (lowercase, hyphen-separated) to avoid URL issues.
+
+## Troubleshooting
+
+### Localhost not opening
+
+If you see connection refused or lock errors:
+
+```bash
+taskkill /F /IM node.exe
+npm run dev
+```
+
+Then reopen http://localhost:3000.
+
+### Port already in use
+
+Next.js may automatically switch ports (for example 3001). Check terminal output for the active URL.
+
+## Deployment
+
+You can deploy this app on platforms that support Next.js, such as:
+
+- Vercel
+- Netlify
+- Azure Static Web Apps
+
+For best results, deploy from the main branch and use npm run build as the build command.
+
+## License
+
+This project is for educational and business showcase use. Add a formal license file if you plan to distribute publicly.
