@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, Moon, Sun, X } from "lucide-react";
-import Image from "next/image";
 
 const sections = [
   { id: "home", label: "Home" },
@@ -52,15 +51,6 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-40 border-b border-neutral-800/70 bg-black/80 backdrop-blur-md dark:border-neutral-700/70">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
-          <div className="relative h-10 w-10 overflow-hidden rounded-full border border-amber-500/70 bg-neutral-900">
-            <Image
-              src="/assets/gym-logo.jpg"
-              alt="Gym logo"
-              fill
-              sizes="40px"
-              className="object-contain"
-            />
-          </div>
           <div className="leading-tight">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">
               Fitness
