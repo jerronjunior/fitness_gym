@@ -73,8 +73,7 @@ export function ContactSection() {
             </p>
             <div className="mt-4 space-y-2 text-sm text-zinc-300">
               <p>
-                <span className="font-semibold text-amber-300">Location:</span> Downtown district,
-                next to the central sports complex.
+                <span className="font-semibold text-amber-300">Location:</span> 45/2 Galle Road, Colombo 05.
               </p>
               <p>
                 <span className="font-semibold text-amber-300">Hours:</span> 24/7 gym access ·
