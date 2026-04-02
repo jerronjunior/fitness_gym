@@ -28,7 +28,7 @@ const services = [
   },
   {
     id: 4,
-    name: "Yoga & Mobility",
+    name: "",
     imageSrc: "/assets/yoga-mobility.jpg",
     category: "Recovery",
     description:
