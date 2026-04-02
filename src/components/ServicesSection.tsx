@@ -20,7 +20,7 @@ const services = [
   },
   {
     id: 3,
-    name: "Cardio & Conditioning",
+    name: "",
     imageSrc: "/assets/cardio-conditioning.png",
     category: "Cardio",
     description:
